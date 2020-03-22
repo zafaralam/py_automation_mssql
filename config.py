@@ -26,6 +26,8 @@ CONN_STR = "DRIVER={ODBC Driver 17 for SQL Server};" + ("SERVER={0};DATABASE={1}
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 QUERY_PATH = os.path.join(APP_ROOT, 'queries')
 
+GEN_FOLDER = os.path.join(APP_ROOT, 'generated')
+
 
 logging.config.fileConfig(fname='logging.conf', disable_existing_loggers=False)
 

@@ -3,7 +3,7 @@ import pyodbc
 import os
 from config import CONN_STR, QUERY_PATH  # , logger
 import logging
-
+from comman import print_list_of_queries
 # Get the logger specified in the file
 logger = logging.getLogger(__name__)
 
@@ -29,5 +29,4 @@ def write_data_to_csv():
 
 
 if __name__ == "__main__":
-    write_data_to_excel()
-    write_data_to_excel()
+    print_list_of_queries()

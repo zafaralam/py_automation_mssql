@@ -143,3 +143,4 @@ venv/
 *.xlsx
 .env
 *.log
+*.csv
