@@ -9,7 +9,7 @@ def get_list_of_avaiable_queries():
     query_files = {}
     for path, dirs, files in os.walk(QUERY_PATH):
         for num, filename in enumerate(files):
-            query_files[num] = filename
+            query_files[num+1] = filename
 
     return query_files
 
