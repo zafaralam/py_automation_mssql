@@ -63,7 +63,7 @@ def write_data_to_file(script_name, filename, export_type):
                     pass
         print("Your exported file is: ", full_file_path)
     except Exception as exception:
-        logger.error("Error Saving file")
+        logger.exception("Error Saving file")
 
 
 if __name__ == "__main__":
