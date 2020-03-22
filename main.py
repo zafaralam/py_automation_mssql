@@ -22,7 +22,7 @@ def write_data_to_file(script_name, filename, export_type):
             logger.info("Reading Script %s", script_name)
             query = file.read()
             with pyodbc.connect(CONN_STR) as cnxn:
-                logger.debug("Running query \n %s", query)
+                logger.info("Running query \n %s", query)
                 tmp_df = pd.read_sql(query, cnxn)
                 if export_type == 1:
                     tmp_df.to_excel(full_file_path, index=False)
@@ -30,12 +30,19 @@ def write_data_to_file(script_name, filename, export_type):
                     tmp_df.to_csv(full_file_path, index=False)
                 else:
                     pass
+        print("Your exported file is: ", full_file_path)
     except Exception as exception:
         logger.error("Error Saving file")
 
 
 if __name__ == "__main__":
     available_queries = get_list_of_avaiable_queries()
+    if len(available_queries.items()) == 0:
+        print("""
+No queries found, please place your queries in the 'quries' folder within the project and
+run the program.
+""")
+        exit(0)
     print("Hello, welcome to the Python MSSQL Extractor!")
     _exit = False
     while not _exit:
