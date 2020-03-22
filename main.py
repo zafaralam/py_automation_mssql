@@ -1,7 +1,7 @@
 import pandas as pd
 import pyodbc
 import os
-from config import CONN_STR, QUERY_PATH, GEN_FOLDER  # , logger
+from config import APP_ROOT, CONN_STR, QUERY_PATH, GEN_FOLDER  # , logger
 import logging
 from comman import print_list_of_queries, get_list_of_avaiable_queries
 # Get the logger specified in the file
@@ -11,6 +11,37 @@ A_EXPORT_TYPES = {
     1: "xlsx",
     2: "csv"
 }
+
+
+def setup():
+
+    if not os.path.isfile(os.path.join(APP_ROOT, ".env")):
+        server = input("Enter server name: ")
+        port = input("Enter port number (Default 1433): ")
+        database = input("Enter database name: ")
+        trusted_conn = input("Use trusted connection (y/n): ")
+
+        if trusted_conn != "y":
+            trusted_conn = 0
+            username = input("Enter database username: ")
+            password = input("Enter database username: ")
+        else:
+            trusted_conn = 1
+            username = ""
+            password = ""
+        with open(os.path.join(APP_ROOT, ".env"), "w") as file:
+
+            file.writelines(
+                ["SERVER={0}\n".format(server), "DATABASE={0}\n".format(database), "DB_PORT={0}\n".format(port), "TRUSTED_CONN={0}\n".format(trusted_conn),
+                    "DB_USERNAME={0}\n".format(username), "DB_PASSWORD={0}\n".format(password)],
+            )
+        # add file
+
+    if not os.path.isdir(GEN_FOLDER):
+        os.mkdir(GEN_FOLDER)
+
+    if not os.path.isdir(QUERY_PATH):
+        os.mkdir(QUERY_PATH)
 
 
 def write_data_to_file(script_name, filename, export_type):
@@ -36,6 +67,7 @@ def write_data_to_file(script_name, filename, export_type):
 
 
 if __name__ == "__main__":
+    setup()
     available_queries = get_list_of_avaiable_queries()
     if len(available_queries.items()) == 0:
         print("""
@@ -105,7 +137,7 @@ run the program.
                                 _in_export_type_selection = False
                             elif export_type >= 1 and export_type <= 2:
                                 filename = input(
-                                    "Enter a filename, do not include the file extension:")
+                                    "Enter a filename, do not include the file extension: ")
                                 filename = filename.strip()
                                 _in_export_type_selection = False
                             else:
