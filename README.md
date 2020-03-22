@@ -17,7 +17,7 @@ py -m venv venv
 
 - Activate the virual environment
 
-  This step is required each time you want to use the scripts to generate. You can install the dependencies globally if you do not want to repeat this step.
+  This step is required each time you want to use the scripts as the python packages used would be installed in the virtual environment. You can install the dependencies globally if you do not want to repeat this step.
 
 ```shell
 venv\Scripts\activate
