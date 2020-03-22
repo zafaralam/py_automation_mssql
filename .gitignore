@@ -144,3 +144,4 @@ venv/
 .env
 *.log
 *.csv
+queries/*.sql
