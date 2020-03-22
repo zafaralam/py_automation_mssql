@@ -35,6 +35,8 @@ pip install -r requirements.txt
 
   - Create a file `.env` in the root of the folder
   - Add the following and update as required.
+  - The `TRUSTED_CONN` can be set to 1 if trusted connection is required
+  - You can ignore the `DB_USERNAME` and `DB_PASSWORD` if trusted connection is selected
 
   ```txt
   SERVER=<Server Name>
