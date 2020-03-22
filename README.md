@@ -1,3 +1,45 @@
 # COVID-19 Daily Report Automation
 
 ## Pre-requisites
+
+- Python 3.7 or above
+- Git
+
+## Setup
+
+Follow the steps below to complete setup.
+
+- Create virtual environment
+
+```shell
+py -m venv venv
+```
+
+- Activate the virual environment
+
+  This step is required each time you want to use the scripts to generate. You can install the dependencies globally if you do not want to repeat this step.
+
+```shell
+venv\Scripts\activate
+```
+
+- Install Python Dependencies
+
+```shell
+pip install -r requirements.txt
+```
+
+- Create the environment file
+
+  This step will help you setup a `.env` file that can store your database connection configuration
+
+  - Create a file `.env` in the root of the folder
+  - Add the following and update as required.
+
+  ```txt
+  SERVER=<Server Name>
+  DATABASE=<Database Name>
+  TRUSTED_CONN=0
+  DB_USERNAME=<username>
+  DB_PASSWORD=<password>
+  ```

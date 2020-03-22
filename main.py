@@ -13,6 +13,7 @@ def write_data():
         logger.info("Reading Script %s", "script1.sql")
         query = file.read()
         with pyodbc.connect(CONN_STR) as cnxn:
+            logger.debug("Running query \n %s", query)
             tmp_df = pd.read_sql(query, cnxn)
             tmp_df.to_excel("Test.xlsx", index=False)
 
