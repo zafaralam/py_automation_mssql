@@ -1,4 +1,4 @@
-# COVID-19 Daily Report Automation
+# Query results to Report Automation
 
 ## Pre-requisites
 
