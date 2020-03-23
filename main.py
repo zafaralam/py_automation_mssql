@@ -24,7 +24,7 @@ def setup():
         if trusted_conn != "y":
             trusted_conn = 0
             username = input("Enter database username: ")
-            password = input("Enter database username: ")
+            password = input("Enter database password: ")
         else:
             trusted_conn = 1
             username = ""
